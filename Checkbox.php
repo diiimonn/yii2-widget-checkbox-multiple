@@ -1,5 +1,5 @@
 <?php
-namespace diiimonn\widgets;
+namespace diiimonn\checkbox;
 
 use Yii;
 use yii\base\Widget;
@@ -13,7 +13,7 @@ use diiimonn\spinner\Spinner;
 
 /**
  * Class Checkbox
- * @package diiimonn\widgets
+ * @package diiimonn\checkbox
  */
 class Checkbox extends Widget
 {
