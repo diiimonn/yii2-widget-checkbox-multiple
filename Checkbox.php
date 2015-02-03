@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Widget;
 use yii\db\Exception;
 use yii\base\InvalidConfigException;
-use yii\mongodb\ActiveRecord;
+use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -54,12 +54,13 @@ class Checkbox extends Widget
     {
         parent::init();
 
-        if (!$this->hasModel() || !$this->model->hasAttribute($this->attribute) || empty($this->attributeLabel)) {
+        if (!$this->hasModel() || !isset($this->model->{$this->attribute}) || empty($this->attributeLabel)) {
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
 
         $this->asset = CheckboxAsset::register($this->getView());
 
+        /** @var ActiveRecord[] $models */
         if (!$this->data && $models = $this->model->{$this->attribute}) {
             $primaryKey = $models[0]->primaryKey();
 
@@ -134,7 +135,6 @@ class Checkbox extends Widget
 
     public function run()
     {
-        $this->registerClientStyle();
         $this->registerClientScript();
 
 
