@@ -1,0 +1,103 @@
+.checkbox-multiple, .checkbox-multiple-items-section, .checkbox-multiple-item {
+    float: left;
+}
+.checkbox-multiple, .checkbox-multiple-items-section{
+    width: 100%;
+}
+.checkbox-multiple {
+    padding: 0;
+}
+
+.checkbox-multiple, .checkbox-multiple-search{
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    position: relative;
+}
+.checkbox-multiple-items-section {
+    cursor: text;
+}
+.checkbox-multiple-item {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    cursor: default;
+    margin: 5px;
+}
+.checkbox-multiple-item,  .checkbox-multiple-placeholder{
+    max-width: 90%;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    padding: 0 20px 0 4px;
+}
+.checkbox-multiple-placeholder {
+    line-height: normal;
+    margin: 7px 5px 4px 5px;
+    color: #999999;
+}
+.checkbox-multiple-remove-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 10px;
+    text-decoration: none;
+    color: #999999;
+}
+.checkbox-multiple-remove-item > span {
+    margin: 4px 3px 0 0;
+}
+.checkbox-multiple-remove-item:hover, .checkbox-multiple-remove-item:focus{
+    text-decoration: none;
+    color: #666666;
+}
+.checkbox-multiple-checkbox-section {
+    display: none;
+}
+.checkbox-multiple-input-section {
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.checkbox-multiple-input-section > :not(input) {
+    position: absolute !important;
+    right: 0;
+    display: none;
+    height: 100%;
+    width: 30px;
+}
+.checkbox-multiple-searching .checkbox-multiple-input-section > :not(input) {
+    display: inline-block;
+}
+.checkbox-multiple-items-section {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+.checkbox-multiple-search {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    padding: 5px;
+    background-color: #ffffff;
+}
+.checkbox-multiple-result {
+    height: 100px;
+    overflow: hidden;
+}
+.checkbox-multiple-result-item, .checkbox-multiple-result-warning, .checkbox-multiple-result-error {
+    padding: 3px 0 3px 5px;
+    font-size: 14px;
+    margin-right: 15px;
+}
+.checkbox-multiple-result-item {
+    cursor: pointer;
+}
+.checkbox-multiple-result-item.active, .checkbox-multiple-result-item:hover {
+    background-color: #428BCA;
+    color: #ffffff;
+}
+.checkbox-multiple-showing {
+    z-index: 99;
+}
