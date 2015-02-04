@@ -9,7 +9,6 @@ use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use diiimonn\widgets\Spinner;
 
 /**
  * Class CheckboxMultiple
@@ -54,7 +53,9 @@ class CheckboxMultiple extends Widget
     {
         parent::init();
 
-        if (!$this->hasModel() || !isset($this->model->{$this->attribute}) || empty($this->attributeLabel)) {
+        if (!$this->hasModel() ||
+            (!isset($this->model->{$this->attribute}) && !is_null($this->model->{$this->attribute})) ||
+            empty($this->attributeLabel)) {
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
 
