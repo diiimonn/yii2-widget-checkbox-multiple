@@ -1,5 +1,5 @@
 <?php
-namespace diiimonn\checkbox;
+namespace diiimonn\widgets;
 
 use Yii;
 use yii\base\Widget;
@@ -9,13 +9,13 @@ use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use diiimonn\spinner\Spinner;
+use diiimonn\widgets\Spinner;
 
 /**
- * Class Checkbox
- * @package diiimonn\checkbox
+ * Class CheckboxMultiple
+ * @package diiimonn\widgets
  */
-class Checkbox extends Widget
+class CheckboxMultiple extends Widget
 {
     /**
      * @var ActiveRecord
@@ -45,11 +45,6 @@ class Checkbox extends Widget
      */
     public $data;
 
-    /**
-     * @var CheckboxAsset
-     */
-    protected $asset;
-
     public function init()
     {
         parent::init();
@@ -57,8 +52,6 @@ class Checkbox extends Widget
         if (!$this->hasModel() || !isset($this->model->{$this->attribute}) || empty($this->attributeLabel)) {
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
-
-        $this->asset = CheckboxAsset::register($this->getView());
 
         /** @var ActiveRecord[] $models */
         if (!$this->data && $models = $this->model->{$this->attribute}) {
@@ -166,6 +159,8 @@ class Checkbox extends Widget
 
     public function registerClientScript()
     {
+        CheckboxMultipleAsset::register($this->getView());
+
         $js = 'jQuery("#' . $this->id . '").checkboxMultiple(' . Json::encode($this->scriptOptions) . ');';
         $view = $this->getView();
         $view->registerJs($js);

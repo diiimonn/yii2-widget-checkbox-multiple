@@ -1,18 +1,18 @@
 <?php
-namespace diiimonn\checkbox;
+namespace diiimonn\widgets;
 
 use yii\web\AssetBundle;
 
 /**
- * Class CheckboxAsset
- * @package diiimonn\checkbox
+ * Class CheckboxMultipleAsset
+ * @package diiimonn\widgets
  */
-class CheckboxAsset extends AssetBundle
+class CheckboxMultipleAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/diiimonn/yii2-widget-checkbox-multiple/assets';
 
     public $depends = [
-        'diiimonn\spinner\SpinnerAsset'
+        'diiimonn\widgets\SpinnerAsset'
     ];
 
     public $js = [
