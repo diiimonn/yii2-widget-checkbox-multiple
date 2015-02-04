@@ -45,6 +45,11 @@ class CheckboxMultiple extends Widget
      */
     public $data;
 
+    /**
+     * @var CheckboxMultipleAsset
+     */
+    protected $asset;
+
     public function init()
     {
         parent::init();
@@ -52,6 +57,8 @@ class CheckboxMultiple extends Widget
         if (!$this->hasModel() || !isset($this->model->{$this->attribute}) || empty($this->attributeLabel)) {
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
+
+        $this->asset = CheckboxMultipleAsset::register($this->getView());
 
         /** @var ActiveRecord[] $models */
         if (!$this->data && $models = $this->model->{$this->attribute}) {
@@ -130,7 +137,6 @@ class CheckboxMultiple extends Widget
     {
         $this->registerClientScript();
 
-
         $sections = [
             Html::tag('ul', '', [
                 'class' => 'checkbox-multiple-items-section'
@@ -159,8 +165,6 @@ class CheckboxMultiple extends Widget
 
     public function registerClientScript()
     {
-        CheckboxMultipleAsset::register($this->getView());
-
         $js = 'jQuery("#' . $this->id . '").checkboxMultiple(' . Json::encode($this->scriptOptions) . ');';
         $view = $this->getView();
         $view->registerJs($js);
