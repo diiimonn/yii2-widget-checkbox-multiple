@@ -12,7 +12,8 @@ class CheckboxMultipleAsset extends AssetBundle
     public $sourcePath = '@vendor/diiimonn/yii2-widget-checkbox-multiple/assets';
 
     public $depends = [
-        'diiimonn\widgets\SpinnerAsset'
+        'diiimonn\assets\SpinnerCanvasAsset',
+        'diiimonn\assets\SlimScrollAsset'
     ];
 
     public $js = [

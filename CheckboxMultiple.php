@@ -59,8 +59,6 @@ class CheckboxMultiple extends Widget
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
 
-        $this->asset = CheckboxMultipleAsset::register($this->getView());
-
         /** @var ActiveRecord[] $models */
         if (!$this->data && $models = $this->model->{$this->attribute}) {
             $primaryKey = $models[0]->primaryKey();
@@ -132,12 +130,13 @@ class CheckboxMultiple extends Widget
         ]);
 
         Html::addCssClass($this->options, 'checkbox-multiple');
+
+        $this->registerAssets();
+        $this->registerClientScript();
     }
 
     public function run()
     {
-        $this->registerClientScript();
-
         $sections = [
             Html::tag('ul', '', [
                 'class' => 'checkbox-multiple-items-section'
@@ -162,6 +161,11 @@ class CheckboxMultiple extends Widget
         $this->options['id'] = $this->id;
 
         return Html::tag('div', implode("\n", $sections), $this->options) . Html::tag('div', '', ['style' => 'clear: both;']);
+    }
+
+    public function registerAssets()
+    {
+        $this->asset = CheckboxMultipleAsset::register($this->getView());
     }
 
     public function registerClientScript()
