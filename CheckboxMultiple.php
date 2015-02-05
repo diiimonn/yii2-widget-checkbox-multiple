@@ -45,7 +45,7 @@ class CheckboxMultiple extends Widget
     public $data;
 
     /**
-     * @var CheckboxMultipleAsset
+     * @var \yii\web\AssetBundle
      */
     protected $asset;
 
@@ -142,7 +142,7 @@ class CheckboxMultiple extends Widget
                 'class' => 'checkbox-multiple-items-section'
             ]),
             Html::tag('div', implode("\n", [
-                Html::tag('div', Spinner::widget($this->spinnerOptions), [
+                Html::tag('div', SpinnerCanvas::widget($this->spinnerOptions), [
                     'class' => 'checkbox-multiple-input-section'
                 ]),
                 Html::tag('div', Html::tag('ul', '', [
