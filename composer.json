@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "diiimonn/yii2-widget-spinner": "dev-master",
+        "diiimonn/yii2-widget-spinner-canvas": "dev-master",
         "diiimonn/yii2-asset-slimscroll": "dev-master"
     },
     "autoload": {
