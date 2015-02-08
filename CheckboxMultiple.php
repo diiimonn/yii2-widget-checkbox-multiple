@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use diiimonn\assets\SlimScrollAsset;
 
 /**
  * Class CheckboxMultiple
@@ -131,7 +132,8 @@ class CheckboxMultiple extends Widget
 
         Html::addCssClass($this->options, 'checkbox-multiple');
 
-        $this->registerAssets();
+        $this->registerAsset();
+        $this->registerSlimScrollAsset();
         $this->registerClientScript();
     }
 
@@ -163,19 +165,24 @@ class CheckboxMultiple extends Widget
         return Html::tag('div', implode("\n", $sections), $this->options) . Html::tag('div', '', ['style' => 'clear: both;']);
     }
 
-    public function registerAssets()
+    protected function registerAsset()
     {
         $this->asset = CheckboxMultipleAsset::register($this->getView());
     }
 
-    public function registerClientScript()
+    protected function registerSlimScrollAsset()
+    {
+        SlimScrollAsset::register($this->getView());
+    }
+
+    protected function registerClientScript()
     {
         $js = 'jQuery("#' . $this->id . '").checkboxMultiple(' . Json::encode($this->scriptOptions) . ');';
         $view = $this->getView();
         $view->registerJs($js);
     }
 
-    public function hasModel()
+    protected function hasModel()
     {
         return $this->model instanceof ActiveRecord;
     }
