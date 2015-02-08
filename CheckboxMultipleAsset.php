@@ -11,10 +11,6 @@ class CheckboxMultipleAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/diiimonn/yii2-widget-checkbox-multiple/assets';
 
-    public $depends = [
-        'diiimonn\assets\SlimScrollAsset'
-    ];
-
     public $js = [
         'js/checkbox.multiple.js'
     ];
