@@ -74,9 +74,10 @@ use yii\helpers\Url;
 * templatePlaceholder : string, html
 * warningMessage : string
 * errorMessage : string
-* defaultCheckbox :: boolean
-* limit : integer
+* defaultCheckbox :: boolean If 'true' and not selected items will be selected checkbox with empty value. Default 'true'.
+* limit : integer Max count selected items.
 * slimScroll : array
+* wait : integer Time out in millisecond before ajax request.
 
 ### Customize scriptOptions example
 ```php
