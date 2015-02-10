@@ -103,3 +103,44 @@ use yii\helpers\Url;
     ],
 ],
 ```
+
+### controller:
+```php
+...
+use yii\db\Query;
+...
+
+public function actionBooks()
+{
+    Yii::$app->response->format = 'json';
+
+    $json = new \stdClass();
+
+    $query = new Query();
+    $query->select([
+        'id' => 'id',
+        'text' => 'name'
+    ]);
+    $query->from(BookModel::tableName());
+
+    if ($search = Yii::$app->request->post('search', '')) {
+        $query->where(['like', 'username', $search]);
+    }
+
+    $query->orderBy([
+        'name' => SORT_ASC
+    ]);
+
+    if ($itemsId = Yii::$app->request->post('itemsId', [])) {
+        $query->andWhere(['not in', 'id', $itemsId]);
+    }
+
+    $query->limit(20);
+
+    $command = $query->createCommand();
+    $data = $command->queryAll();
+    $json->results = array_values($data);
+
+    return $json;
+}
+```
