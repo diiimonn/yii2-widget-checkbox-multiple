@@ -23,6 +23,7 @@ to the ```require``` section of your `composer.json` file.
 ```php
 ...
 use diiimonn\widgets\CheckboxMultiple;
+use yii\helpers\Url;
 ...
 
 <?= $form->field($model, 'books')->widget(CheckboxMultiple::className(), [
@@ -35,7 +36,7 @@ use diiimonn\widgets\CheckboxMultiple;
     'placeholder' => Yii::t('app', 'Select ...'),
 ]) ?>
 ```
-or not used ActiveForm
+or not use ActiveForm
 ```php
 ...
 use diiimonn\widgets\CheckboxMultiple;
@@ -83,7 +84,8 @@ use yii\helpers\Url;
 'scriptOptions' => [
     'defaultCheckbox' => false,
     'limit' => 10,
-    'templateItem' => Html::tag('li', Html::tag('span', '{text}') . Html::tag('span', Html::tag('span', '', [
+    'templateItem' => Html::tag('li', Html::tag('span', '{text}') .
+            Html::tag('span', Html::tag('span', '', [
                 'class' => 'glyphicon glyphicon-remove',
             ]), [
                 'class' => 'checkbox-multiple-remove-item',
