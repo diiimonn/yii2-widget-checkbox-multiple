@@ -39,6 +39,7 @@ or not used ActiveForm
 ```php
 ...
 use diiimonn\widgets\CheckboxMultiple;
+use yii\helpers\Url;
 ...
 
 <?= CheckboxMultiple::widget([
@@ -57,7 +58,45 @@ use diiimonn\widgets\CheckboxMultiple;
 ### Settings
 * data : array the select option data items. The array keys are option values, and the array values are the corresponding option labels. If not set this option the 'attribute' will be relation name.
 * dataAttribute : string attribute name in relation models if not set 'data'.
-* scriptOptions : array options for customize script settings. Customize templates: 'templateItem', 'templateCheckbox', 'templateResultItem', 'templateInput', 'templateResultError', 'templateResultWarning', 'templatePlaceholder'. Customize messages: 'warningMessage', 'errorMessage'.
+* scriptOptions : array options for customize script settings.
 * placeholder : string
 * options : array options for widget tag.
 * spinnerOptions : array options for [yii2-widget-spinner-canvas](https://github.com/diiimonn/yii2-widget-spinner-canvas).
+
+### scriptOptions
+* templateItem : string, html
+* templateCheckbox : string, html
+* templateResultItem : string, html
+* templateInput : string, html
+* templateResultError : string, html
+* templateResultWarning : string, html
+* templatePlaceholder : string, html
+* warningMessage : string
+* errorMessage : string
+* defaultCheckbox :: boolean
+* limit : integer
+* slimScroll : array
+
+### Customize scriptOptions example
+```php
+...
+'scriptOptions' => [
+    'defaultCheckbox' => false,
+    'limit' => 10,
+    'templateItem' => Html::tag('li', Html::tag('span', '{text}') . Html::tag('span', Html::tag('span', '', [
+                'class' => 'glyphicon glyphicon-remove',
+            ]), [
+                'class' => 'checkbox-multiple-remove-item',
+            ]), [
+                'class' => 'checkbox-multiple-item',
+            ]),
+    'templateInput' => Html::textInput('checkbox-multiple-input', '', [
+            'class' => 'form-control input-sm',
+        ]),
+    'slimScroll' => [
+        'color' => '#333',
+        'railOpacity' => 0.5,
+        'railColor' => '#666666',
+    ],
+],
+```
