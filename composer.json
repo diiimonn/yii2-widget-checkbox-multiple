@@ -13,8 +13,8 @@
         }
     ],
     "require": {
-        "diiimonn/yii2-widget-spinner-canvas": "dev-master",
-        "diiimonn/yii2-asset-slimscroll": "dev-master"
+        "diiimonn/yii2-widget-spinner-canvas": "*",
+        "diiimonn/yii2-asset-slimscroll": "*"
     },
     "autoload": {
         "psr-4": {
