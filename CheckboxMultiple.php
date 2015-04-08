@@ -59,7 +59,9 @@ class CheckboxMultiple extends Widget
         }
 
         /** @var ActiveRecord[] $models */
-        if (!$this->data && $models = $this->model->{$this->attribute}) {
+        $models = $this->model->{$this->attribute};
+
+        if (!$this->data && is_array($models) && current($models) instanceof ActiveRecord) {
             $primaryKey = $models[0]->primaryKey();
 
             if (!isset($primaryKey[0])) {
