@@ -54,7 +54,7 @@ class CheckboxMultiple extends Widget
 
         if (!$this->hasModel() ||
             (!isset($this->model->{$this->attribute}) && !is_null($this->model->{$this->attribute})) ||
-            (!$this->data && empty($this->attributeLabel))) {
+            (is_null($this->data) && empty($this->attributeLabel))) {
             throw new InvalidConfigException("Either 'model' and 'attribute' and 'attributeLabel' properties must be specified.");
         }
 
