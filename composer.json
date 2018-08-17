@@ -13,12 +13,22 @@
         }
     ],
     "require": {
-        "diiimonn/yii2-widget-spinner-canvas": "*",
-        "diiimonn/yii2-asset-slimscroll": "*"
+        "diiimonn/yii2-widget-spinner-canvas": "dev-v2",
+        "diiimonn/yii2-asset-slimscroll": "dev-v2"
     },
     "autoload": {
         "psr-4": {
             "diiimonn\\widgets\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/diiimonn/yii2-widget-spinner-canvas"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/diiimonn/yii2-asset-slimscroll"
+        }
+    ]
 }
